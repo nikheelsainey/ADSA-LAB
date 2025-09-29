@@ -229,9 +229,32 @@ int main() {
 
 Q8
 
-struct Student *ptr1, *ptr2;
-ptr1 = (struct Student*) malloc(5 * sizeof(struct Student));
-ptr2 = (struct Student*) calloc(5, sizeof(struct Student));
+#include <stdio.h>
+#include <stdlib.h>
+
+struct student {
+    int roll;
+    char name[20];
+    float marks;
+};
+
+int main() {
+    int n = 3;
+
+    // Using malloc
+    struct student *arr1 = (struct student *) malloc(n * sizeof(struct student));
+    // Using calloc
+    struct student *arr2 = (struct student *) calloc(n, sizeof(struct student));
+
+    // Print first student's data
+    printf("Malloc -> roll: %d, marks: %f\n", arr1[0].roll, arr1[0].marks);
+    printf("Calloc -> roll: %d, marks: %f\n", arr2[0].roll, arr2[0].marks);
+
+    free(arr1);
+    free(arr2);
+    return 0;
+}
+
 
 Q9
 
